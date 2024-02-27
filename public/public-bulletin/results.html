@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Blockchain Voting</title>
+
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <style>
+            body {
+                background-color: #123962;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg" style="background-color: #cff4fc">
+            <div class="container-fluid">
+                <h1 class="navbar-brand my-1">
+                    <i class="fa-solid fa-dice-d20 me-1"></i>
+                    Blockchain Voting
+                </h1>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="container-fluid">
+            <img
+                src="/public/images/blockchain-logo.png"
+                style="width: 180px; height: 180px"
+                class="d-block mx-auto my-4"
+            />
+
+            <p class="fs-4 text-center text-info">
+                <i class="fa-solid fa-trophy me-1"></i>
+                Election Results
+            </p>
+
+            <form action="get-result" method="POST" class="text-center">
+                <input
+                    type="submit"
+                    class="btn btn-info"
+                    value="Load Results"
+                />
+                <p class="fs-5 text-center text-info my-3"><%- _ %></p>
+            </form>
+
+            <form action="home-page" method="POST" class="mt-3">
+                <input type="submit" value="Go Back" class="btn btn-info" />
+            </form>
+        </main>
+    </body>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"
+    ></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script
+        src="https://apis.google.com/js/client.js?onload=onClientLoad"
+        type="text/javascript"
+    ></script>
+</html>
