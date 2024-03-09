@@ -53,7 +53,6 @@ async function main() {
         wallet.import('admin', identity);
         console.log('Successfully enrolled admin user "admin" and imported it into the wallet');
 
-
     } catch (error) {
         console.log(`Failed to enroll admin user "admin": ${error}`);
         console.log('Please run enrollAdmin.js in a seperate terminal window before continuing!\n');
@@ -266,41 +265,39 @@ app.post('/EC-dashboard/EC-addNewVoter', function (request, response) {
     currVoteId += 1;
 
     console.log(`Voter ID: ${voter_id}
-Voter PIN: ${voter_pin}
-Vote ID: ${currVoteId}`);
+        Voter PIN: ${voter_pin}
+        Vote ID: ${currVoteId}`);
 
-    //     if (voter_email) {
-    //         let transporter = nodemailer.createTransport({
-    //             service: 'Gmail',
-    //             auth: {
-    //                 user: 'cmyaeaung124@gmail.com',
-    //                 pass: 'iaaiokhubbouisfp'
-    //             }
-    //         });
+    if (voter_email) {
+        let transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: 'cmyaeaung124@gmail.com',
+                pass: 'iaaiokhubbouisfp'
+            }
+        });
 
-    //         let mailOptions = {
-    //             from: 'cmyaeaung124@gmail.com',
-    //             to: voter_email,
-    //             subject: 'Voter Details for Elections',
-    //             text:
-    //                 `Hello Voter,
-    // Your voting details for the upcoming election are as follows:
-    // Voter ID: ${voter_id}
-    // Voter PIN: ${voter_pin}
-    // Vote ID: ${currVoteId}`,
-    //         };
+        let mailOptions = {
+            from: 'cmyaeaung124@gmail.com',
+            to: voter_email,
+            subject: 'Voter Details for Elections',
+            text:
+                `Hello Voter,
+                    Your voting details for the upcoming election are as follows:
+                    Voter ID: ${voter_id}
+                    Voter PIN: ${voter_pin}`,
+        };
 
-    //         transporter.sendMail(mailOptions, (error, info) => {
-    //             if (error) {
-    //                 console.log(error);
-    //             } else {
-    //                 console.log('Email sent: ' + info.response);
-    //             }
-    //         });
-    //     };
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+    };
 
     // Creating Corresponding Vote Object
-
     if (request.session.loggedin) {
         if (request.session.username == 1) {
             async function createVoteObj() {
@@ -734,10 +731,6 @@ app.get('/v_already', function (request, response) {
 
 app.get('/public-bulletin/results.html', function (request, response) {
     response.sendFile(path.join(__dirname + '/public/public-bulletin/results.html'));
-});
-
-app.get('/public-bulletin/queryAllVotes.html', function (request, response) {
-    response.sendFile(path.join(__dirname + '/public/public-bulletin/queryAllVotes.html'));
 });
 
 app.post('/public-bulletin/get-result', function (request, response) {
