@@ -387,11 +387,10 @@ app.get('/EC-dashboard/ec-set-time.html', function (request, response) {
 });
 
 app.post('/EC-dashboard/set-time', function (request, response) {
-    let duration_d = request.body.duration_d;
     let duration_h = request.body.duration_h;
     let duration_m = request.body.duration_m;
 
-    let duration = ((parseInt(duration_d) * 24 * 60) + (parseInt(duration_h) * 60) + (parseInt(duration_m))).toString();
+    let duration = ((parseInt(duration_h) * 60) + (parseInt(duration_m))).toString();
     let timestr = null;
 
     async function setTime() {
